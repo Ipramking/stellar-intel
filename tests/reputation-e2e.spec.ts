@@ -145,7 +145,7 @@ describe('reputation e2e — append then query', () => {
     const redacted = redactIntent(intent)
     appendRow(db, makeOutcomeRow(redacted))
 
-    const [stored] = queryRows(db, 'anchor-test') as Array<Record<string, unknown>>
+    const [stored] = queryRows(db, 'anchor-test') as unknown as Array<Record<string, unknown>>
     expect(stored).not.toHaveProperty('recipientAccount')
     expect(stored).not.toHaveProperty('recipientName')
     expect(stored).not.toHaveProperty('recipientEmail')
